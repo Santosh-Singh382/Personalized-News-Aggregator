@@ -1,0 +1,115 @@
+/* Login Card */
+.card {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px 25px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #4facfe, #e885ff);
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* Card Title */
+.card h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+/* Input Fields */
+.card input {
+  width: 95%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.card input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Button */
+.card button {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+.register-container, .login-container {
+  width: 350px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #5cacee;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #468cd3;
+}
+
+.message {
+  text-align: center;
+  color: red;
+  margin-top: 10px;
+}
+
+/* Error Message */
+.card p {
+  margin-top: 15px;
+  color: #ffbaba;
+  font-size: 0.95rem;
+}

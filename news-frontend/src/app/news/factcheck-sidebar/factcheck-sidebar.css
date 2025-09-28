@@ -1,0 +1,72 @@
+.sidebar {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  width: 300px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sidebar .author {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.alert.verified {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.alert.warning {
+  background-color: #fef3c7;
+  color: #78350f;
+}
+
+.section h6 {
+  margin: 8px 0 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.section p {
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+.btn {
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

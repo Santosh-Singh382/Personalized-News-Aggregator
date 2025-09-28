@@ -1,0 +1,33 @@
+<div class="sidebar" *ngIf="news">
+  <h5 class="title">{{ news.title }}</h5>
+  <p class="author text-muted">By {{ news.author || 'Unknown' }} • {{ news.publishedAt | date:'short' }}</p>
+
+  <div [ngClass]="news.factCheck === 'Verified' ? 'alert verified' : 'alert warning'">
+    <i class="fas" [ngClass]="news.factCheck === 'Verified' ? 'fa-check-circle' : 'fa-exclamation-triangle'"></i>
+    {{ news.factCheck || 'Pending' }}
+  </div>
+
+  <div class="section">
+    <h6>Summary:</h6>
+    <p>{{ news.summary || 'No summary available.' }}</p>
+  </div>
+
+  <div class="section">
+    <h6>Sentiment:</h6>
+    <p>{{ news.sentiment || 'N/A' }}</p>
+  </div>
+
+  <div class="section">
+    <h6>Bias:</h6>
+    <p>{{ news.biasLabel || 'N/A' }}</p>
+  </div>
+
+  <div class="section">
+    <h6>Topic:</h6>
+    <p>{{ news.topicCluster || 'N/A' }}</p>
+  </div>
+
+  <a [href]="news.url" target="_blank" class="btn btn-primary btn-sm mt-2">
+    View Original
+  </a>
+</div>

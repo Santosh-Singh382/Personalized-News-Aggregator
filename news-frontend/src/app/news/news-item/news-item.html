@@ -1,0 +1,30 @@
+<div class="card news-card">
+  <img *ngIf="news.urlToImage" [src]="news.urlToImage" class="card-img-top" alt="{{ news.title }}">
+
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-start mb-2">
+      <span class="badge" [ngClass]="{
+        'bg-success': news.sentiment==='positive',
+        'bg-danger': news.sentiment==='negative',
+        'bg-secondary': news.sentiment==='neutral'
+      }">{{ news.sentiment }}</span>
+
+    <span class="bias-indicator" [ngClass]="{ 
+      'bias-left': news.biasLabel==='Left', 
+      'bias-right': news.biasLabel==='Right', 
+      'bias-neutral': news.biasLabel==='Neutral' 
+      }">{{ news.biasLabel }}</span> 
+      </div>
+    <h5 class="card-title">{{ news.title }}</h5>
+    <p class="card-text">{{ news.description }}</p>
+
+    <div class="mb-2"> <span class="badge bg-secondary">{{ news.topicCluster }}</span> </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <small class="text-muted">By {{ news.author || 'Unknown' }} • {{ news.publishedAt | date:'shortDate' }}</small>
+      <button class="btn btn-sm btn-outline-info" (click)="onFactCheck()">
+        <i class="fas" [ngClass]="news.factCheck==='Verified' ? 'fa-check-circle' : 'fa-info-circle'"></i> Fact Check
+      </button>
+    </div>
+  </div>
+</div>

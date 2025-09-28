@@ -1,0 +1,73 @@
+<header class="hero-header">
+  <!-- 🔹 Row 1: Top Bar (Auth + Theme Toggle) -->
+  <div class="top-bar">
+    <div class="auth-buttons">
+      <!-- Logged Out -->
+      <ng-container *ngIf="!auth.isLoggedIn(); else loggedIn">
+        <a routerLink="/login" class="nav-btn">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+        <a routerLink="/register" class="nav-btn">
+          <i class="fas fa-user-plus"></i> Register
+        </a>
+      </ng-container>
+
+      <!-- Logged In -->
+      <ng-template #loggedIn>
+        <a routerLink="/profile" class="nav-btn">
+          <i class="fas fa-user"></i> Profile
+        </a>
+        <button (click)="logout()" class="nav-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </ng-template>
+
+      <!-- Admin Only -->
+      <a *ngIf="auth.getRole() === 'ADMIN'" routerLink="/admin" class="nav-btn">
+        <i class="fas fa-tools"></i> Admin
+      </a>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+      <button (click)="toggleTheme()" [title]="theme.isDarkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+        <i class="fas" [ngClass]="theme.isDarkMode() ? 'fa-moon' : 'fa-sun'"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 🔹 Row 2: Logo & Title -->
+  <div class="hero-title">
+    <span class="logo">📰</span>
+    <h1>{{ websiteName }}</h1>
+    <p class="tagline">Your one-stop destination for all news</p>
+  </div>
+
+  <!-- 🔹 Row 3: Navigation Buttons -->
+  <nav class="nav-bar">
+    <a routerLink="/" class="nav-btn"><i class="fas fa-home"></i> Home</a>
+    <a routerLink="/livenews" class="nav-btn"><i class="fas fa-bolt"></i> Live</a>
+    <a routerLink="/world" class="nav-btn"><i class="fas fa-globe"></i> World</a>
+    <a routerLink="/entertainment" class="nav-btn"><i class="fas fa-film"></i> Entertainment</a>
+    <a routerLink="/politics" class="nav-btn"><i class="fas fa-landmark"></i> Politics</a>
+    <a routerLink="/sports" class="nav-btn"><i class="fas fa-running"></i> Sports</a>
+    <a routerLink="/technology" class="nav-btn"><i class="fas fa-cog"></i> Technology</a>
+    <a routerLink="/business" class="nav-btn"><i class="fas fa-chart-line"></i> Business</a>
+    <a routerLink="/education" class="nav-btn"><i class="fas fa-book"></i> Education</a>
+    <a routerLink="/about" class="nav-btn"><i class="fas fa-info-circle"></i> About</a>
+  </nav>
+
+  <!-- 🔹 Row 4: Search Box -->
+  <div class="search-box">
+    <input 
+      type="text" 
+      placeholder="Search news..." 
+      [(ngModel)]="searchQuery" 
+      (keyup.enter)="onSearch()" 
+      aria-label="Search news"
+    />
+    <button (click)="onSearch()" aria-label="Search">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</header>

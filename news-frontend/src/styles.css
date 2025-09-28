@@ -1,0 +1,123 @@
+/* 🌞 Light Theme */
+body.light-theme {
+  background: linear-gradient(135deg, #4facfe, #e885ff);
+  color: #fff;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* 🌙 Dark Theme */
+body.dark-theme {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ================== NAV BUTTONS ================== */
+.nav-btn {
+  display: inline-block;
+  margin: 0.3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.light-theme .nav-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+body.light-theme .nav-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-theme .nav-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}
+body.dark-theme .nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ================== SEARCH BOX ================== */
+.search-box {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-box button {
+  padding: 0.6rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+body.light-theme .search-box {
+  background: rgba(255, 255, 255, 0.2);
+}
+body.light-theme .search-box input {
+  color: #fff;
+  background: transparent;
+}
+body.light-theme .search-box button {
+  background: #ffffff55;
+  color: #fff;
+}
+body.light-theme .search-box button:hover {
+  background: #fff;
+  color: #333;
+}
+
+body.dark-theme .search-box {
+  background: rgba(255, 255, 255, 0.1);
+}
+body.dark-theme .search-box input {
+  color: #e0e0e0;
+  background: transparent;
+}
+body.dark-theme .search-box button {
+  background: #333;
+  color: #e0e0e0;
+}
+body.dark-theme .search-box button:hover {
+  background: #555;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 768px) {
+  .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-btn {
+    width: 90%;
+    text-align: center;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-box input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-box button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,18 @@
+.news-card {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+.bias-left { background: rgba(0,123,255,0.2); color:#004085; padding:0.2rem 0.4rem; border-radius:4px;}
+.bias-right { background: rgba(220,53,69,0.2); color:#721c24; padding:0.2rem 0.4rem; border-radius:4px;}
+.bias-neutral { background: rgba(108,117,125,0.2); color:#383d41; padding:0.2rem 0.4rem; border-radius:4px;}

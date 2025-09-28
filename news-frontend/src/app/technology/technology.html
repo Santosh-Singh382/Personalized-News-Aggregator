@@ -1,0 +1,39 @@
+<div class="technology-container">
+  <h2>💻 Technology News</h2>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="loading">Loading technology news...</div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <!-- News Grid -->
+  <div class="news-grid" *ngIf="!loading && technologyNews.length > 0">
+    <div class="news-card" *ngFor="let news of technologyNews">
+      <img *ngIf="news.urlToImage" [src]="news.urlToImage" alt="News Image">
+
+      <div class="news-content">
+        <h3>{{ news.title }}</h3>
+        <p class="desc">{{ news.description }}</p>
+
+        <div class="meta">
+          <span *ngIf="news.author">✍ {{ news.author }}</span>
+          <span *ngIf="news.publishedAt">📅 {{ formatDate(news.publishedAt) }}</span>
+        </div>
+
+        <div class="tags">
+          <span *ngIf="news.sentiment">Sentiment: {{ news.sentiment }}</span>
+          <span *ngIf="news.biasLabel">Bias: {{ news.biasLabel }}</span>
+          <span *ngIf="news.factCheck">Fact Check: {{ news.factCheck }}</span>
+        </div>
+
+        <a [href]="news.url" target="_blank" class="read-more">Read Full Article →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && technologyNews.length === 0 && !error" class="empty">
+    No technology news available.
+  </div>
+</div>

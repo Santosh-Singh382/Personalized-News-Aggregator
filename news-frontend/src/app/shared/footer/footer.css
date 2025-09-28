@@ -1,0 +1,72 @@
+.site-footer {
+  background-color: var(--bg-color, #1a1a1a);
+  color: var(--text-color, #fff);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-family: Arial, sans-serif;
+
+  .footer-brand {
+    margin-bottom: 1.5rem;
+
+    .logo {
+      font-size: 2rem;
+      margin-right: 0.5rem;
+    }
+
+    h2 {
+      margin: 0.3rem 0;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  }
+
+  .footer-nav {
+    margin-bottom: 1.5rem;
+
+    a {
+      margin: 0 0.7rem;
+      text-decoration: none;
+      color: inherit;
+      font-weight: 500;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #5cacee;
+      }
+    }
+  }
+
+  .footer-social {
+    margin-bottom: 1.5rem;
+
+    a {
+      margin: 0 0.5rem;
+      color: inherit;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #5cacee;
+      }
+    }
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+}
+
+/* Optional Dark/Light Theme Variables */
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+}
+
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #fff;
+}

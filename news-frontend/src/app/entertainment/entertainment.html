@@ -1,0 +1,55 @@
+<section class="entertainment-section">
+  <div class="section-header">
+    <h2>🎬 Entertainment News</h2>
+  </div>
+
+  <!-- Loading & Error states -->
+  <div *ngIf="isLoading" class="loading">Loading entertainment news...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <!-- News Cards -->
+  <div class="news-cards" *ngIf="!isLoading && entertainmentNews.length > 0">
+    <article class="news-card" *ngFor="let n of entertainmentNews">
+      
+      <!-- Image -->
+      <div class="card-img" *ngIf="n.urlToImage">
+        <img [src]="n.urlToImage" [alt]="n.title">
+      </div>
+
+      <!-- Content -->
+      <div class="card-content">
+        <span class="category-tag">Entertainment</span>
+        
+        <h3>
+          <a [href]="n.url" target="_blank" rel="noopener">{{ n.title }}</a>
+        </h3>
+
+        <p class="description">{{ n.description || n.summary }}</p>
+
+        <div class="card-meta">
+          <span class="source">
+            {{ n.author || 'Unknown Author' }}
+          </span>
+          <span class="time">
+            {{ n.publishedAt | date:'medium' }}
+          </span>
+        </div>
+
+        <!-- Extra labels -->
+        <div class="labels">
+          <span *ngIf="n.sentiment" class="label sentiment">
+            Sentiment: {{ n.sentiment }}
+          </span>
+          <span *ngIf="n.factCheck" class="label fact-check">
+            {{ n.factCheck }}
+          </span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && entertainmentNews.length === 0" class="empty">
+    No entertainment news available.
+  </div>
+</section>

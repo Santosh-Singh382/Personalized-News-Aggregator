@@ -1,0 +1,13 @@
+<div class="profile-container" *ngIf="user; else noProfile">
+  <h2>👤 My Profile</h2>
+  <p><strong>ID:</strong> {{ user.id }}</p>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Role:</strong> {{ user.role }}</p>
+
+  <button class="logout-btn" (click)="logout()">🚪 Logout</button>
+</div>
+
+<ng-template #noProfile>
+  <div class="error-msg">{{ message }}</div>
+</ng-template>
