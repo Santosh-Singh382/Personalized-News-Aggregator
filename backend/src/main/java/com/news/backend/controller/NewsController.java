@@ -14,6 +14,9 @@ import java.util.List;
 public class NewsController {
 
     private final NewsService newsService;
+    public NewsController(NewsService newsService) {
+        this.newsService = newsService;
+    }
 
     // Live news (fetch + enrich + save + return)
     @GetMapping("/live")
