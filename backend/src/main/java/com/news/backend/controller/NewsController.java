@@ -2,14 +2,14 @@ package com.news.backend.controller;
 
 import com.news.backend.model.News;
 import com.news.backend.service.NewsService;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/news")
-@RequiredArgsConstructor
+
 @CrossOrigin(origins = "http://localhost:4200")
 public class NewsController {
 
