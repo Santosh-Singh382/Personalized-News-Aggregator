@@ -17,6 +17,7 @@ public class NewsController {
     public NewsController(NewsService newsService) {
         this.newsService = newsService;
     }
+<<<<<<< HEAD
     // All latest news
     @GetMapping("/latest")
     public List<News> getLatestNews() {
@@ -28,6 +29,8 @@ public class NewsController {
     public List<News> getCategoryLatestNews(@PathVariable String category) {
         return newsService.getNewsByCategoryLatest(category);
     }
+=======
+>>>>>>> 4222321aa52d0409bd5d6dcdc7ac354613051265
 
     // Live news (fetch + enrich + save + return)
     @GetMapping("/live")
