@@ -2,18 +2,32 @@ package com.news.backend.controller;
 
 import com.news.backend.model.News;
 import com.news.backend.service.NewsService;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/news")
-@RequiredArgsConstructor
+
 @CrossOrigin(origins = "http://localhost:4200")
 public class NewsController {
 
     private final NewsService newsService;
+    public NewsController(NewsService newsService) {
+        this.newsService = newsService;
+    }
+    // All latest news
+    @GetMapping("/latest")
+    public List<News> getLatestNews() {
+        return newsService.getAllNewsLatest();
+    }
+
+    // Category-wise latest
+    @GetMapping("/category/latest/{category}")
+    public List<News> getCategoryLatestNews(@PathVariable String category) {
+        return newsService.getNewsByCategoryLatest(category);
+    }
 
     // Live news (fetch + enrich + save + return)
     @GetMapping("/live")

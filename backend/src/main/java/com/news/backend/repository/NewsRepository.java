@@ -19,4 +19,10 @@ public interface NewsRepository extends MongoRepository<News, String> {
     List<News> findBySummaryContainingIgnoreCase(String keyword);
 
     List<News> findByCategoryIgnoreCase(String category);
+
+    // Latest news pehle
+    List<News> findAllByOrderByPublishedAtDesc();
+    List<News> findByCategoryIgnoreCaseOrderByPublishedAtDesc(String category);
+
+
 }

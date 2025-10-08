@@ -21,14 +21,17 @@ export class NewsList implements OnInit, OnDestroy {
   loading: boolean = false;
   autoRefreshSub?: Subscription;
 
+  // Optional: selected category
+  selectedCategory: string = 'technology';
+
   constructor(private newsService: NewsService) {}
 
   ngOnInit(): void {
-    this.fetchLiveNews();
+    this.fetchLatestNews();
 
-    // ✅ Start Auto Refresh by default (5 min)
+    // Auto-refresh every 5 min
     this.autoRefreshSub = interval(300000).subscribe(() => {
-      this.fetchLiveNews();
+      this.fetchLatestNews();
     });
   }
 
@@ -36,9 +39,41 @@ export class NewsList implements OnInit, OnDestroy {
     this.stopAutoRefresh();
   }
 
+  // ✅ Fetch latest news (backend already sorts latest-first)
+  fetchLatestNews() {
+    this.loading = true;
+    this.newsService.getLatestNews().subscribe({
+      next: (res) => {
+        this.newsList = res;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error(err);
+        this.loading = false;
+      }
+    });
+  }
+
+  // Fetch category-wise latest news
+  fetchCategoryNews(category: string) {
+    this.selectedCategory = category;
+    this.loading = true;
+    this.newsService.getCategoryLatest(category).subscribe({
+      next: (res) => {
+        this.newsList = res;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error(err);
+        this.loading = false;
+      }
+    });
+  }
+
+  // Live fetch from API (optional, fetch + enrich)
   fetchLiveNews() {
     this.loading = true;
-    this.newsService.getLiveNews().subscribe({
+    this.newsService.getLiveNews(this.selectedCategory).subscribe({
       next: (res) => {
         this.newsList = res;
         this.loading = false;
@@ -52,7 +87,7 @@ export class NewsList implements OnInit, OnDestroy {
 
   onSearch() {
     if (!this.searchQuery.trim()) {
-      this.fetchLiveNews();
+      this.fetchLatestNews();
       return;
     }
 
@@ -77,7 +112,7 @@ export class NewsList implements OnInit, OnDestroy {
     if (this.autoRefreshSub) {
       this.stopAutoRefresh();
     } else {
-      this.autoRefreshSub = interval(30000).subscribe(() => this.fetchLiveNews());
+      this.autoRefreshSub = interval(300000).subscribe(() => this.fetchLatestNews());
     }
   }
 

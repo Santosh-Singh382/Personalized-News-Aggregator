@@ -1,72 +1,208 @@
-.site-footer {
-  background-color: var(--bg-color, #1a1a1a);
-  color: var(--text-color, #fff);
-  text-align: center;
-  padding: 2rem 1rem;
-  font-family: Arial, sans-serif;
-
-  .footer-brand {
-    margin-bottom: 1.5rem;
-
-    .logo {
-      font-size: 2rem;
-      margin-right: 0.5rem;
-    }
-
-    h2 {
-      margin: 0.3rem 0;
-    }
-
-    p {
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-  }
-
-  .footer-nav {
-    margin-bottom: 1.5rem;
-
-    a {
-      margin: 0 0.7rem;
-      text-decoration: none;
-      color: inherit;
-      font-weight: 500;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #5cacee;
-      }
-    }
-  }
-
-  .footer-social {
-    margin-bottom: 1.5rem;
-
-    a {
-      margin: 0 0.5rem;
-      color: inherit;
-      font-size: 1.2rem;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #5cacee;
-      }
-    }
-  }
-
-  .footer-copy {
-    font-size: 0.8rem;
-    color: #aaa;
-  }
-}
-
-/* Optional Dark/Light Theme Variables */
 :root {
-  --bg-color: #f5f5f5;
-  --text-color: #333;
+  --primary: #00c6ff;
+  --secondary: #ff00c6;
+  --accent: #ffea00;
+  --bg-glass: rgba(255, 255, 255, 0.08);
+  --text-light: #fff;
+  --text-dark: #111;
+  --border-radius: 25px;
+  --shadow-glow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  --transition: all 0.4s ease;
 }
 
-body.dark-mode {
-  --bg-color: #1a1a1a;
-  --text-color: #fff;
+/* ---------- Site Footer ---------- */
+.site-footer {
+  background: linear-gradient(135deg, #1c1c2f, #2a2a45);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-glow);
+  color: var(--text-light);
+  padding: 3rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- Brand Section ---------- */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-brand .logo {
+  font-size: 3rem;
+  animation: bounce 2s infinite, glowLogo 2s infinite alternate;
+}
+
+.footer-brand h2 {
+  font-size: 3rem; 
+  font-weight: 900; 
+  display: inline-block; /* required for text clipping */ 
+  background: linear-gradient(90deg, #0078ff, #0ebdee, #ff00ff); /* fallback colors if --accent undefined */ 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  background-clip: text; /* for Firefox */ 
+  color: transparent; /* fallback */ 
+  animation: glowText 2s infinite alternate; 
+} 
+/* Glow animation */ 
+@keyframes glowText { 
+  0% { text-shadow: 0 0 5px #0078ff, 0 0 10px #00c6ff; } 
+  50% { text-shadow: 0 0 15px #2c8bf9, 0 0 20px #ff00ff; } 
+  100% { text-shadow: 0 0 5px #00c6ff, 0 0 10px #ff00ff; } 
+}
+
+
+.footer-brand p {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+}
+
+/* ---------- Footer Navigation ---------- */
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  color: #fff;
+}
+
+.footer-nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: var(--transition);
+  padding: 0.2rem 0.4rem;
+}
+
+.footer-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #0078ff, #0ebdee, #ff00ff);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+  border-radius: 5px;
+}
+
+.footer-nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.footer-nav a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px #0078ff, 0 0 30px #ff00ff, 0 0 40px #0ebdee;
+}
+
+/* ---------- Social Icons ---------- */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: whitesmoke;
+}
+
+.footer-social a {
+  color: var(--text-light);
+  font-size: 1.3rem;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+  
+}
+
+.footer-social a:hover {
+  background: linear-gradient(135deg, #0078ff, #0ebdee, #ff00ff);
+  color: var(--text-dark);
+  transform: scale(1.15);
+  box-shadow: 0 0 20px #0078ff, 0 0 30px #ff00ff, 0 0 40px #0ebdee;
+}
+
+/* ---------- Copyright ---------- */
+.footer-copy {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.408);
+  width: 100%;
+  text-align: center;
+  padding-top: 1rem;
+  color: rgba(253, 248, 248, 0.936);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 0.4px;
+  font-weight: 500;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Optional: subtle glow on hover */
+.footer-copy:hover {
+  color: var(--accent);
+  text-shadow: 0 0 5px var(--accent), 0 0 10px var(--secondary);
+}
+
+/* Optional: responsive font size */
+@media (max-width: 768px) {
+  .footer-copy {
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* ---------- Animations ---------- */
+@keyframes glowText {
+  0% { text-shadow: 0 0 5px var(--primary), 0 0 10px var(--secondary); }
+  50% { text-shadow: 0 0 10px var(--secondary), 0 0 15px var(--accent); }
+  100% { text-shadow: 0 0 5px var(--primary), 0 0 10px var(--accent); }
+}
+
+@keyframes glowLogo {
+  0% { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary); }
+  50% { text-shadow: 0 0 20px var(--secondary), 0 0 30px var(--accent); }
+  100% { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 1024px) {
+  .footer-brand h2 { font-size: 1.4rem; }
+  .footer-nav a { font-size: 0.95rem; }
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 2.5rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .footer-brand .logo { font-size: 2.4rem; }
+  .footer-brand h2 { font-size: 1.3rem; }
+  .footer-nav { gap: 0.8rem; }
+  .footer-social a { width: 38px; height: 38px; font-size: 1.1rem; }
+}
+
+@media (max-width: 480px) {
+  .footer-brand h2 { font-size: 1.1rem; }
+  .footer-brand p { font-size: 0.9rem; }
+  .footer-nav a { font-size: 0.85rem; }
+  .footer-social { gap: 0.7rem; }
+  .footer-social a { width: 34px; height: 34px; font-size: 1rem; }
 }

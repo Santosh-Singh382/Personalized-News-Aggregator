@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { News } from '../models/news.model';
 import { NewsService } from '../services/news.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-livenews',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './livenews.html',
   styleUrls: ['./livenews.css']
 })

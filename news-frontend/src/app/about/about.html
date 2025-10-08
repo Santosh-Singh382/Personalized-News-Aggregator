@@ -1,7 +1,7 @@
 <div class="about-wrapper">
   <!-- Hero Section -->
   <section class="hero">
-    <h1>About <span>Personalized News Aggregator</span></h1>
+    <h1>About <br><span>Personalized News Aggregator</span></h1>
     <p>
       ✨ Welcome! Your AI-powered news companion is here to bring you the stories that matter most.
       We collect news from reliable sources and show you updates based on your interests.
@@ -21,7 +21,6 @@
         Health, Science, and Entertainment</em>.
       </p>
     </div>
-
     <div class="card">
       <h2>🚀 Our Vision</h2>
       <p>
@@ -29,6 +28,45 @@
         news — ensuring you stay informed with confidence and clarity.
       </p>
     </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2>⚙️ How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="icon">🧠</div>
+        <h3>1. Analyze Interests</h3>
+        <p>Our AI learns from your reading preferences and suggests relevant articles automatically.</p>
+      </div>
+      <div class="step">
+        <div class="icon">🌐</div>
+        <h3>2. Fetch Trusted Sources</h3>
+        <p>We collect headlines from verified publishers and APIs like NewsAPI, The Guardian, and BBC.</p>
+      </div>
+      <div class="step">
+        <div class="icon">🧾</div>
+        <h3>3. Filter & Rank</h3>
+        <p>Articles are sorted by credibility, freshness, and relevance — ensuring quality over quantity.</p>
+      </div>
+      <div class="step">
+        <div class="icon">💡</div>
+        <h3>4. AI Insights</h3>
+        <p>Each story comes with bias detection and sentiment analysis so you can see the whole picture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack -->
+  <section class="tech-stack">
+    <h2>🧩 Technology Stack</h2>
+    <ul>
+      <li><strong>Frontend:</strong> Angular, TypeScript, HTML, CSS</li>
+      <li><strong>Backend:</strong> Spring Boot (Java), REST APIs</li>
+      <li><strong>Database:</strong> MySql / MongoDB (for user preferences & feeds)</li>
+      <li><strong>AI/ML:</strong> Python (NLP, sentiment & bias detection models)</li>
+      <!--li><strong>Hosting:</strong> Firebase Hosting / AWS Cloud</li-->
+    </ul>
   </section>
 
   <!-- Why Choose Us -->
@@ -63,39 +101,30 @@
     </div>
   </section>
 
+  <!-- Privacy & Ethics -->
+  <section class="privacy-ethics">
+    <h2>🔒 Privacy & Ethics</h2>
+    <p>
+      Your data is yours — always. We never sell or share your information with third parties.
+      Our algorithms are designed with <strong>fairness, transparency, and accountability</strong>
+      in mind. Every recommendation is explainable and user-controllable.
+    </p>
+  </section>
+
   <!-- Meet Our Team -->
   <section class="team">
     <h2>👨‍💻 Meet Our Team</h2>
     <div class="team-grid">
-      <div class="team-card">
-        <img src="assets/team/somnath.jpg" alt="Somnath">
-        <h3>Somnath</h3>
-        <p>Founder & Backend Architect</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/team/rahul.jpg" alt="Rahul">
-        <h3>Rahul</h3>
-        <p>Frontend Developer</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/team/priya.jpg" alt="Priya">
-        <h3>Priya</h3>
-        <p>UI/UX Designer</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/team/amit.jpg" alt="Amit">
-        <h3>Amit</h3>
-        <p>Data Scientist (AI/ML)</p>
-      </div>
-      <div class="team-card">
-        <img src="assets/team/amit.jpg" alt="Member5">
-        <h3>Rohit</h3>
-        <p>Mobile App Developer</p>
-      </div>
-      <div class="team-card">
-        <img src="src/assets/team/image1.png" alt="Member6">
-        <h3>Ananya</h3>
-        <p>Content Strategist</p>
+      <div class="team-card scroll-reveal" *ngFor="let member of teamMembers">
+        <img [src]="member.photo" [alt]="member.name">
+        <h3>{{ member.name }}</h3>
+        <p>{{ member.role }}</p>
+        <div class="social-links">
+          <a *ngIf="member.linkedin" [href]="member.linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a *ngIf="member.twitter" [href]="member.twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a *ngIf="member.github" [href]="member.github" target="_blank"><i class="fab fa-github"></i></a>
+          <!--a *ngIf="member.medium" [href]="member.medium" target="_blank"><i class="fab fa-medium"></i></a-->
+        </div>
       </div>
     </div>
   </section>

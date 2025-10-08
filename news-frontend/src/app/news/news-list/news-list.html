@@ -1,4 +1,6 @@
 <div class="news-container">
+
+  <!-- ---------- Header: Search + Auto Refresh ---------- -->
   <div class="header">
     <input [(ngModel)]="searchQuery" placeholder="Search news..." />
     <button (click)="onSearch()" class="btn btn-primary">Search</button>
@@ -7,21 +9,37 @@
     </button>
   </div>
 
-  <div *ngIf="loading" class="loading">Loading news...</div>
+  <!-- ---------- Category Tabs ---------- -->
+  <div class="category-tabs">
+    <button 
+      *ngFor="let cat of ['technology','business','sports','health','science','world','india','entertainment']" 
+      [ngClass]="{'active': selectedCategory === cat}" 
+      (click)="fetchCategoryNews(cat)">
+      {{ cat | titlecase }}
+    </button>
+  </div>
 
+  <!-- ---------- Loading & Empty State ---------- -->
+  <div *ngIf="loading" class="loading">Loading news...</div>
   <div *ngIf="!loading && newsList.length === 0" class="no-news">
     No news found.
   </div>
 
+  <!-- ---------- News Grid ---------- -->
   <div class="news-grid">
     <div class="news-card" *ngFor="let news of newsList">
       <img *ngIf="news.urlToImage" [src]="news.urlToImage" alt="news image">
+
       <div class="news-content">
-        <h3><a [href]="news.url" target="_blank">{{ news.title }}</a></h3>
+        <h3>
+          <a [href]="news.url" target="_blank">{{ news.title }}</a>
+        </h3>
+
         <p class="meta">
           <span>{{ news.author || 'Unknown' }}</span> |
           <span>{{ news.publishedAt | date:'medium' }}</span>
         </p>
+
         <p>{{ news.description }}</p>
 
         <!-- Sentiment Badge -->
@@ -41,4 +59,5 @@
       </div>
     </div>
   </div>
+
 </div>

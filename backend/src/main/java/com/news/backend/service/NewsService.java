@@ -2,7 +2,6 @@ package com.news.backend.service;
 
 import com.news.backend.model.News;
 import com.news.backend.repository.NewsRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
 public class NewsService {
 
     private final NewsRepository newsRepository;
@@ -25,6 +23,11 @@ public class NewsService {
 
     @Value("${ml.api.baseurl}") // e.g. http://127.0.0.1:5001
     private String mlApiBaseUrl;
+    
+    public NewsService(NewsRepository newsRepository, WebClient.Builder webClientBuilder) {
+        this.newsRepository = newsRepository;
+        this.webClientBuilder = webClientBuilder;
+    }
 
     //Categories list (auto-update ke liye)
     private final List<String> categories = List.of(
@@ -158,4 +161,14 @@ public class NewsService {
     public List<News> getNewsByCategory(String category) {
         return newsRepository.findByCategoryIgnoreCase(category);
     }
+    // Latest news
+public List<News> getAllNewsLatest() {
+    return newsRepository.findAllByOrderByPublishedAtDesc();
+}
+
+// Category-wise latest
+public List<News> getNewsByCategoryLatest(String category) {
+    return newsRepository.findByCategoryIgnoreCaseOrderByPublishedAtDesc(category);
+}
+
 }

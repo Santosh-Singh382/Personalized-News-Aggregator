@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { News } from '../models/news.model';
 import { NewsService } from '../services/news.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-entertainment',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './entertainment.html',
   styleUrl: './entertainment.css'
 })
